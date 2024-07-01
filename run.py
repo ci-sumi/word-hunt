@@ -63,11 +63,10 @@ def main():
     # print(f"{word}")
     
     while True:
+        word,hint =choose_random_wod(fruit)
         try:
             attempts=6
-            word,hint =choose_random_wod(fruit)
             while attempts>0:
-                
                 print(f"{word}")
                 word_letter = input("Please do enter a four letter fruit name:").lower()
                 if word_letter=="I".lower():
