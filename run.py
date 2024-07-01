@@ -24,6 +24,14 @@ def welcome_message():#welcome function
     print("Try to guess the word,one letter at a time")
     print(f"You have 6 attempts,GOOD LUCK {name}!!")
     
-    
+def display_instructions():#function for displaying instructionns
+    clear_screen()
+    print("===INSTRUCTIONS===")
+    print("Try to guess the word one letter at a time")
+    print("You have 6 attempts to guess the correct word")
+    print("Enter a single letter each time and press Enter")
+    input("Press Enter to return the main menu\n")
+
 welcome_message()
+display_instructions()
 
