@@ -32,6 +32,25 @@ def display_instructions():#function for displaying instructionns
     print("Enter a single letter each time and press Enter")
     input("Press Enter to return the main menu\n")
 
-welcome_message()
-display_instructions()
+def main():
+    welcome_message()
+    while True:
+        try:
+            word_letter = input("Please do enter a letter:")
+            if word_letter=="I".lower():
+                display_instructions()
+                clear_screen()
+                continue
+            if word_letter=="hint".lower():
+                print("Hint will be provided")
+                continue
+            if not word_letter.isalpha() or len(word_letter)!=1:
+                raise ValueError
+                
+        except ValueError as v:
+            print("Enter a valid letter")
+        
+                
+    
 
+main()
