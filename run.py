@@ -58,25 +58,46 @@ def main():
     welcome_message()
     fruit=read_file_from_textfile('fruits.txt')
     print(fruit)
-    word,hint =choose_random_wod(fruit)
-    print(f"{word}")
-    print(f"{hint}")
+    
+    # word,hint =choose_random_wod(fruit)
+    # print(f"{word}")
     
     while True:
         try:
-            word_letter = input("Please do enter a four letter fruit name:")
-            if word_letter=="I".lower():
-                display_instructions()
-                clear_screen()
-                continue
-            if word_letter=="hint".lower():
-                print("Hint will be provided")
-                continue
-            if not word_letter.isalpha() or len(word_letter)<=4:
-                raise ValueError
+            attempts=6
+            word,hint =choose_random_wod(fruit)
+            while attempts>0:
                 
+                print(f"{word}")
+                word_letter = input("Please do enter a four letter fruit name:").lower()
+                if word_letter=="I".lower():
+                    display_instructions()
+                    clear_screen()
+                    continue
+                if word_letter=="hint".lower():
+                    print(f"{hint}")
+                    continue
+                if not word_letter.isalpha() or len(word_letter)<=4:
+                    raise ValueError
+                if word_letter==word.lower():
+                    print(f"congratulations you guessed the word {word} correctly")
+                    break
+                else:
+                    attempts -= 1
+                    print(f"Incorrect! You have {attempts} attempts left.")
+                if attempts==0:
+                    print(f"Oops! You ran out of attempts. The word was '{word}'.")
+                    break
+            play_again=input("Do u want to restart the hunt game?:y/n")
+            if play_again.lower()=="y":
+                continue
+            else:
+                break
+                  
         except ValueError as v:
             print("Enter a valid letters")
+    
+        
         
                 
     
