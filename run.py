@@ -86,17 +86,32 @@ def main():
                     print(f"Incorrect! You have {attempts} attempts left.")
                 if attempts==0:
                     print(f"Oops! You ran out of attempts. The word was '{word}'.")
+                    print_goodbye()
                     break
             play_again=input("Do u want to restart the hunt game?:y/n")
             if play_again.lower()=="y":
                 continue
             else:
+                
                 break
                   
         except ValueError as v:
             print("Enter a valid letters")
     
-        
+def print_goodbye():
+    print("""
+  _____          __  __ ______    ______      ________ _____  
+ / ____|   /\   |  \/  |  ____|  / __ \ \    / /  ____|  __ \ 
+| |  __   /  \  | \  / | |__    | |  | \ \  / /| |__  | |__) |
+| | |_ | / /\ \ | |\/| |  __|   | |  | |\ \/ / |  __| |  _  / 
+| |__| |/ ____ \| |  | | |____  | |__| | \  /  | |____| | \ \ 
+ \_____/_/    \_\_|  |_|______|  \____/   \/   |______|_|  \_\
+
+""")
+
+# Example usage:
+
+       
         
                 
     
