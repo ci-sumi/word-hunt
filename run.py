@@ -1,3 +1,4 @@
+import random
 from colorama import Fore,Style,init #module use to print the colored text in the terminal
 import os
 
@@ -36,13 +37,19 @@ def read_file_from_textfile(filepath):
     word_hint={}
     with open(filepath,'r')as file:
         for line in file:
-            line=line.strip()
+            line=line.strip().strip('"').strip(',')
             parts=line.split(":")
             if len(parts)==2:
-                word=parts[0]
-                hint=parts[1]
+                word=parts[0].strip('"')
+                hint=parts[1].strip('"')
                 word_hint[word]=hint
     return word_hint
+
+#Function to generate random word
+def choose_random_wod(word_dict):
+    word=random.choice(list(word_dict.keys()))
+    hint = word_dict[word]
+    return word,hint
 
 
 
@@ -51,6 +58,9 @@ def main():
     welcome_message()
     fruit=read_file_from_textfile('fruits.txt')
     print(fruit)
+    word,hint =choose_random_wod(fruit)
+    print(f"{word}")
+    print(f"{hint}")
     
     while True:
         try:
