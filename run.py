@@ -83,6 +83,8 @@ def main():
                     break
                 else:
                     attempts -= 1
+                    highlighted = hightlight_correct_letters(word_letter, word)
+                    print(highlighted)
                     print(f"Incorrect! You have {attempts} attempts left.")
                 if attempts==0:
                     print(f"Oops! You ran out of attempts. The word was '{word}'.")
@@ -108,6 +110,24 @@ def print_goodbye():
  \_____/_/    \_\_|  |_|______|  \____/   \/   |______|_|  \_\
 
 """)
+#Add function too highlight correct and incorrect letters
+def hightlight_correct_letters(guess,correctword):
+    HIGHLIGHT_COLOR_CORRECT ="\033[92m"
+    HIGHLIGHT_COLOR_WRONG ="\033[91m"
+    RESET_COLOR="\033[0m"
+    result=""
+    if len(guess) !=len(correctword):
+        raise ValueError("Guess and correct word must be same length")
+    for guess_letter,correctword_letter in zip(guess,correctword):
+        if guess_letter.lower()==correctword_letter.lower():
+            result+=HIGHLIGHT_COLOR_CORRECT + guess_letter + RESET_COLOR
+        else:
+            result += HIGHLIGHT_COLOR_WRONG + guess_letter + RESET_COLOR
+            
+    top_border = "╭" + "─" * (len(result) + 2) + "╮"
+    bottom_border = "╰" + "─" * (len(result) + 2) + "╯"
+
+    return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
 
 # Example usage:
 
