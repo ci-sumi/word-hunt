@@ -76,8 +76,12 @@ def main():
                 if word_letter=="hint".lower():
                     print(f"{hint}")
                     continue
-                if not word_letter.isalpha() or len(word_letter)<=4:
-                    raise ValueError
+                if not word_letter.isalpha() or len(word_letter)!=5:
+                    print("Please enter a valid five letters fruit name")
+                    continue
+                # if word_letter not in word:
+                    # print("This is not a valid fruit")
+                    # continue
                 if word_letter==word.lower():
                     print(f"congratulations you guessed the word {word} correctly")
                     break
