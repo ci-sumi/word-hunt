@@ -5,14 +5,10 @@ fruits = {
     "Peach": "Round fruit with fuzzy skin and sweet, juicy flesh.",
     "Apple": "Common fruit with various colors and crisp or soft flesh.",
     "Lemon": "Sour citrus fruit often used in cooking and beverages.",
-    "Plum": "Small, round fruit with a smooth skin and sweet or tart flesh.",
     "Guava": "Tropical fruit with green or yellow skin and pink or white flesh.",
-    "Kiwi": "Small fruit with brown fuzzy skin and green or yellow flesh.",
     "Olive": "Small fruit with a pit, used to produce olive oil.",
     "Papaw": "Tropical fruit with orange flesh and black seeds.",
-    "Lychee": "Small fruit with a rough, red shell and juicy, white flesh.",
     "Dates": "Sweet, sticky fruit that grows on date palm trees.",
-    "Figs": "Sweet fruit with a soft flesh and edible seeds.",
     "Pears": "Fruit with a distinctive bell shape and sweet, juicy flesh.",
     "Prune": "Dried plum, often used as a natural laxative."
 }
