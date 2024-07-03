@@ -57,7 +57,7 @@ def choose_random_wod(word_dict):
 def main():
     welcome_message()
     fruit=read_file_from_textfile('fruits.txt')
-    print(fruit)
+    # print(fruit)
     
     # word,hint =choose_random_wod(fruit)
     # print(f"{word}")
@@ -67,7 +67,7 @@ def main():
         try:
             attempts=6
             while attempts>0:
-                print(f"{word}")
+                # print(f"{word}")
                 word_letter = input("Please do enter a four letter fruit name:").lower()
                 if word_letter=="I".lower():
                     display_instructions()
@@ -93,7 +93,7 @@ def main():
                     print(f"Incorrect! You have {attempts} attempts left.")
                 if attempts==0:
                     print(f"Oops! You ran out of attempts. The word was '{word}'.")
-                    print_goodbye()
+                    print_gameover()
                     break
             play_again=input("Do u want to restart the hunt game?:y/n: ")
             if play_again.lower()=="y":
@@ -116,7 +116,7 @@ def print_you_won():
    |_|  \____/ \____/      \/  \/    \____/|_| \_|
                                                   
 \033[0m""")    
-def print_goodbye():
+def print_gameover():
     print("""
   _____          __  __ ______    ______      ________ _____  
  / ____|   /\   |  \/  |  ____|  / __ \ \    / /  ____|  __ \ 
