@@ -84,6 +84,7 @@ def main():
                     # continue
                 if word_letter==word.lower():
                     print(f"congratulations you guessed the word {word} correctly")
+                    print_you_won()
                     break
                 else:
                     attempts -= 1
@@ -103,7 +104,18 @@ def main():
                   
         except ValueError as v:
             print("Enter a valid letters")
-    
+
+
+def print_you_won():
+    print("""
+\033[92m__     ______  _    _  __          _______  _   _ 
+\ \   / / __ \| |  | | \ \        / /  __ \| \ | |
+ \ \_/ / |  | | |  | |  \ \  /\  / /| |  | |  \| |
+  \   /| |  | | |  | |   \ \/  \/ / | |  | | . ` |
+   | | | |__| | |__| |    \  /\  /  | |__| | |\  |
+   |_|  \____/ \____/      \/  \/    \____/|_| \_|
+                                                  
+\033[0m""")    
 def print_goodbye():
     print("""
   _____          __  __ ______    ______      ________ _____  
@@ -114,6 +126,10 @@ def print_goodbye():
  \_____/_/    \_\_|  |_|______|  \____/   \/   |______|_|  \_\
 
 """)
+    
+# def print_congratulations():
+#     print()
+    
 #Add function too highlight correct and incorrect letters
 def hightlight_correct_letters(guess,correctword):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
