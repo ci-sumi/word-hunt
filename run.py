@@ -95,11 +95,11 @@ def main():
                     print(f"Oops! You ran out of attempts. The word was '{word}'.")
                     print_goodbye()
                     break
-            play_again=input("Do u want to restart the hunt game?:y/n")
+            play_again=input("Do u want to restart the hunt game?:y/n: ")
             if play_again.lower()=="y":
                 continue
             else:
-                
+                print_goodbye()
                 break
                   
         except ValueError as v:
@@ -129,7 +129,13 @@ def print_goodbye():
     
 # def print_congratulations():
 #     print()
-    
+
+def print_goodbye():
+    print("""
+______________
+< Good BYE! >
+ --------------
+""")   
 #Add function too highlight correct and incorrect letters
 def hightlight_correct_letters(guess,correctword):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
