@@ -18,6 +18,7 @@ def welcome_message():# welcome function
     print("Try to guess the word,one letter at a time")
     print(f"You have 6 attempts,GOOD LUCK {name}!!")
     
+    
 def display_instructions():# function for displaying instructionns
     clear_screen()
     print("===INSTRUCTIONS===")
@@ -26,29 +27,38 @@ def display_instructions():# function for displaying instructionns
     print("Enter a single letter each time and press Enter")
     input("Press Enter to return the main menu\n")
     
+    
+    
 with open("fruits.json") as file:
         data=file.read()
         fruit_dictionary=json.loads(data)
+        
 
 def print_you_won():
     f=Figlet(font='big')
     print(f.renderText("You Won"))
+    
+    
 
 def print_gameover():
     f=Figlet(font='big')
     print(f.renderText("Game Over"))
+    
+    
 def print_goodbye():
    f=Figlet(font='big')
    print(f.renderText("Good Bye"))   
+   
+   
 
 def correct_letters(g,f):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
     HIGHLIGHT_COLOR_WRONG ="\033[91m"
     RESET_COLOR="\033[0m"
     result=""
-    if len(guess) !=len(fruit_random):
+    if len(g) !=len(f):
         raise ValueError("Guess and correct word must be same length")
-    for guess_letter,correctword_letter in zip(guess,fruit_random):
+    for guess_letter,correctword_letter in zip(g,f):
         if guess_letter.lower()==correctword_letter.lower():
             result+=HIGHLIGHT_COLOR_CORRECT + guess_letter + RESET_COLOR
         else:
@@ -58,10 +68,12 @@ def correct_letters(g,f):
     bottom_border = "╰" + "─" * (len(result) + 2) + "╯"
 
     return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
+
+
 def main():
     welcome_message()
     print("Guess a fruit name,if you want a hint,type'hint'")   
-while True:
+    while True:
         fruit_random=random.choice(list(fruit_dictionary.keys()))
         print(fruit_random)
         try:
@@ -79,9 +91,6 @@ while True:
                 if not guess.isalpha() or len(guess)!=5:
                     print("Please enter a valid five letters fruit name")
                     continue
-                # if word_letter not in word:
-                    # print("This is not a valid fruit")
-                    # continue
             
                 if(guess!=fruit_random.lower()):
                     attempts -= 1
@@ -92,6 +101,7 @@ while True:
                     print(f"Out of attempts. The word was'{fruit_random}'.")
                     print_gameover()
                     break
+                
             play_again=input("Do u want to restart the hunt game?:y/n: ")
             if play_again.lower()=="y":
                 continue
