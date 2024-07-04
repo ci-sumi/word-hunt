@@ -11,20 +11,19 @@ def clear_screen():# function to clear the screen
     
 def welcome_message():# welcome function
     clear_screen()
-    f=Figlet(font='letters')
-    print(f.renderText("word Hunt"))
     name=input("Please do enter your name:\n")
-    print("Press 'I' for the instruction")
-    print("Try to guess the word,one letter at a time")
+    print("Try to guess the word")
     print(f"You have 6 attempts,GOOD LUCK {name}!!")
+    input("Press Enter to return the main menu\n")
+
     
     
 def display_instructions():# function for displaying instructionns
     clear_screen()
     print("===INSTRUCTIONS===")
-    print("Try to guess the word one letter at a time")
+    print("Try to guess the word")
     print("You have 6 attempts to guess the correct word")
-    print("Enter a single letter each time and press Enter")
+    print("You will have hint when you type 'hint'")
     input("Press Enter to return the main menu\n")
     
     
@@ -70,8 +69,8 @@ def correct_letters(g,f):
     return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
 
 
-def main():
-    welcome_message()
+def play_game():
+    clear_screen()
     print("Guess a fruit name,if you want a hint,type'hint'")   
     while True:
         fruit_random=random.choice(list(fruit_dictionary.keys()))
@@ -115,13 +114,36 @@ def main():
 
 
 
-    
 
 
-
-       
+def main():
+   
+    while True:
+        clear_screen()
+        f=Figlet(font='letters')
+        print(f.renderText("word Hunt"))
+        print("=== MAIN MENU ===")
+        print("1.Main Menu")
+        print("2.Instructions")
+        print("3.Play game")
+        print("4.Exit game")
         
-                
-    
+        choice=input("Enter your choice:")
+        if(choice=='1'):
+            clear_screen()
+            welcome_message()
+        elif(choice=='2'):
+            clear_screen()
+            display_instructions()
+        elif(choice=='3'):
+            play_game()
+        elif(choice=='4'):
+            clear_screen()
+            print_goodbye()
+            break
+        else:
+            print("invalid choice")
+            input("Press Enter to continue...")
+
 
 main()
