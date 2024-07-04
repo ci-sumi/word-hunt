@@ -1,16 +1,8 @@
 import random
-from colorama import Fore,Style,init 
 import os
 import pyfiglet
 from pyfiglet import Figlet
 
-init() # initialize colorama
-
-def print_text(text,color,style=""): 
-    """
-    print centered text with color and style support
-    """ 
-    print(color+style+text.center(80)+Style.RESET_ALL)
 
 def clear_screen():#function to clear the screen
     os.system('cls' if os.name=='nt' else "clear")  
