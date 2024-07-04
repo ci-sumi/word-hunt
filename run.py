@@ -110,35 +110,18 @@ def main():
 
 
 def print_you_won():
-    print("""
-\033[92m__     ______  _    _  __          _______  _   _ 
-\ \   / / __ \| |  | | \ \        / /  __ \| \ | |
- \ \_/ / |  | | |  | |  \ \  /\  / /| |  | |  \| |
-  \   /| |  | | |  | |   \ \/  \/ / | |  | | . ` |
-   | | | |__| | |__| |    \  /\  /  | |__| | |\  |
-   |_|  \____/ \____/      \/  \/    \____/|_| \_|
-                                                  
-\033[0m""")    
+    f=Figlet(font='big')
+    print(f.renderText("You Won"))
 def print_gameover():
-    print("""
-  _____          __  __ ______    ______      ________ _____  
- / ____|   /\   |  \/  |  ____|  / __ \ \    / /  ____|  __ \ 
-| |  __   /  \  | \  / | |__    | |  | \ \  / /| |__  | |__) |
-| | |_ | / /\ \ | |\/| |  __|   | |  | |\ \/ / |  __| |  _  / 
-| |__| |/ ____ \| |  | | |____  | |__| | \  /  | |____| | \ \ 
- \_____/_/    \_\_|  |_|______|  \____/   \/   |______|_|  \_\
-
-""")
+    f=Figlet(font='big')
+    print(f.renderText("Game Over"))
     
 # def print_congratulations():
 #     print()
 
 def print_goodbye():
-    print("""
-______________
-< Good BYE! >
- --------------
-""")   
+   f=Figlet(font='big')
+   print(f.renderText("Good Bye"))   
 #Add function too highlight correct and incorrect letters
 def hightlight_correct_letters(guess,correctword):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
@@ -158,7 +141,7 @@ def hightlight_correct_letters(guess,correctword):
 
     return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
 
-# Example usage:
+
 
        
         
