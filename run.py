@@ -1,10 +1,11 @@
 import random
+import json
 import os
 import pyfiglet
 from pyfiglet import Figlet
 
 
-def clear_screen():#function to clear the screen
+def clear_screen():# function to clear the screen
     os.system('cls' if os.name=='nt' else "clear")  
     
     
@@ -17,7 +18,7 @@ def welcome_message():# welcome function
     print("Try to guess the word,one letter at a time")
     print(f"You have 6 attempts,GOOD LUCK {name}!!")
     
-def display_instructions():#function for displaying instructionns
+def display_instructions():# function for displaying instructionns
     clear_screen()
     print("===INSTRUCTIONS===")
     print("Try to guess the word one letter at a time")
@@ -25,69 +26,70 @@ def display_instructions():#function for displaying instructionns
     print("Enter a single letter each time and press Enter")
     input("Press Enter to return the main menu\n")
     
-    
-#Function to read fruits and hints from the text file
-def read_file_from_textfile(filepath):
-    word_hint={}
-    with open(filepath,'r')as file:
-        for line in file:
-            print(line)
-            line=line.strip().strip('"').strip(',')
-            parts=line.split(":")
-            if len(parts)==2:
-                word=parts[0].strip('"')
-                hint=parts[1].strip('"')
-                word_hint[word]=hint
-    return word_hint
+with open("fruits.json") as file:
+        data=file.read()
+        fruit_dictionary=json.loads(data)
 
-#Function to generate random word
-def choose_random_wod(word_dict):
-    word=random.choice(list(word_dict.keys()))
-    hint = word_dict[word]
-    return word,hint
+def print_you_won():
+    f=Figlet(font='big')
+    print(f.renderText("You Won"))
 
+def print_gameover():
+    f=Figlet(font='big')
+    print(f.renderText("Game Over"))
+def print_goodbye():
+   f=Figlet(font='big')
+   print(f.renderText("Good Bye"))   
 
+def correct_letters(g,f):
+    HIGHLIGHT_COLOR_CORRECT ="\033[92m"
+    HIGHLIGHT_COLOR_WRONG ="\033[91m"
+    RESET_COLOR="\033[0m"
+    result=""
+    if len(guess) !=len(fruit_random):
+        raise ValueError("Guess and correct word must be same length")
+    for guess_letter,correctword_letter in zip(guess,fruit_random):
+        if guess_letter.lower()==correctword_letter.lower():
+            result+=HIGHLIGHT_COLOR_CORRECT + guess_letter + RESET_COLOR
+        else:
+            result += HIGHLIGHT_COLOR_WRONG + guess_letter + RESET_COLOR
+            
+    top_border = "╭" + "─" * (len(result) + 2) + "╮"
+    bottom_border = "╰" + "─" * (len(result) + 2) + "╯"
 
-
+    return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
 def main():
     welcome_message()
-    fruit=read_file_from_textfile('fruits.txt')
-    # print(fruit)
-    
-    # word,hint =choose_random_wod(fruit)
-    # print(f"{word}")
-    
-    while True:
-        word,hint =choose_random_wod(fruit)
+    print("Guess a fruit name,if you want a hint,type'hint'")   
+while True:
+        fruit_random=random.choice(list(fruit_dictionary.keys()))
+        print(fruit_random)
         try:
             attempts=6
             while attempts>0:
-                # print(f"{word}")
-                word_letter = input("Please do enter a four letter fruit name:").lower()
-                if word_letter=="I".lower():
-                    display_instructions()
-                    clear_screen()
+                print(fruit_random)
+                guess = input("Please do enter a 5 letter fruit name:").lower()
+                if guess==fruit_random.lower():
+                    print(f"you guessed the word {fruit_random} correctly")
+                    print_you_won()
+                    break
+                if guess=="hint".lower():
+                    print(fruit_dictionary[fruit_random])
                     continue
-                if word_letter=="hint".lower():
-                    print(f"{hint}")
-                    continue
-                if not word_letter.isalpha() or len(word_letter)!=5:
+                if not guess.isalpha() or len(guess)!=5:
                     print("Please enter a valid five letters fruit name")
                     continue
                 # if word_letter not in word:
                     # print("This is not a valid fruit")
                     # continue
-                if word_letter==word.lower():
-                    print(f"congratulations you guessed the word {word} correctly")
-                    print_you_won()
-                    break
-                else:
+            
+                if(guess!=fruit_random.lower()):
                     attempts -= 1
-                    highlighted = hightlight_correct_letters(word_letter, word)
+                    highlighted = correct_letters(guess,fruit_random)
                     print(highlighted)
                     print(f"Incorrect! You have {attempts} attempts left.")
                 if attempts==0:
-                    print(f"Oops! You ran out of attempts. The word was '{word}'.")
+                    print(f"Out of attempts. The word was'{fruit_random}'.")
                     print_gameover()
                     break
             play_again=input("Do u want to restart the hunt game?:y/n: ")
@@ -101,37 +103,9 @@ def main():
             print("Enter a valid letters")
 
 
-def print_you_won():
-    f=Figlet(font='big')
-    print(f.renderText("You Won"))
-def print_gameover():
-    f=Figlet(font='big')
-    print(f.renderText("Game Over"))
+
+
     
-# def print_congratulations():
-#     print()
-
-def print_goodbye():
-   f=Figlet(font='big')
-   print(f.renderText("Good Bye"))   
-#Add function too highlight correct and incorrect letters
-def hightlight_correct_letters(guess,correctword):
-    HIGHLIGHT_COLOR_CORRECT ="\033[92m"
-    HIGHLIGHT_COLOR_WRONG ="\033[91m"
-    RESET_COLOR="\033[0m"
-    result=""
-    if len(guess) !=len(correctword):
-        raise ValueError("Guess and correct word must be same length")
-    for guess_letter,correctword_letter in zip(guess,correctword):
-        if guess_letter.lower()==correctword_letter.lower():
-            result+=HIGHLIGHT_COLOR_CORRECT + guess_letter + RESET_COLOR
-        else:
-            result += HIGHLIGHT_COLOR_WRONG + guess_letter + RESET_COLOR
-            
-    top_border = "╭" + "─" * (len(result) + 2) + "╮"
-    bottom_border = "╰" + "─" * (len(result) + 2) + "╯"
-
-    return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
 
 
 
