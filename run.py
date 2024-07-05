@@ -5,6 +5,7 @@ import json
 import os
 import pyfiglet
 from pyfiglet import Figlet
+from datetime import datetime 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -26,11 +27,9 @@ def clear_screen():# function to clear the screen
     
 def welcome_message():# welcome function
     clear_screen()
-    name=input("Please do enter your name:\n")
     print("Try to guess the word")
-    print(f"You have 6 attempts,GOOD LUCK {name}!!")
+    print(f"You have 6 attempts,GOOD LUCK!!")
     input("Press Enter to return the main menu\n")
-
     
     
 def display_instructions():# function for displaying instructionns
@@ -83,8 +82,18 @@ def correct_letters(g,f):
     return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
 
 
+def append_score_to_sheet(name,score):
+    from datetime import time
+    
+    date = datetime.now().strftime("%d/%m/%Y")
+    new_row=[name,score,date]
+    scores.append_row(new_row)
+    print(f"Score recorded for {name}: {score}")
+    
+
 def play_game():
     clear_screen()
+    name=input("Please do enter your name:\n")
     print("Guess a fruit name,if you want a hint,type'hint'")   
     while True:
         fruit_random=random.choice(list(fruit_dictionary.keys()))
@@ -97,6 +106,8 @@ def play_game():
                 if guess==fruit_random.lower():
                     print(f"you guessed the word {fruit_random} correctly")
                     print_you_won()
+                    score = attempts*10
+                    append_score_to_sheet(name,score)
                     break
                 if guess=="hint".lower():
                     print(fruit_dictionary[fruit_random])
@@ -113,6 +124,8 @@ def play_game():
                 if attempts==0:
                     print(f"Out of attempts. The word was'{fruit_random}'.")
                     print_gameover()
+                    score=0
+                    append_score_to_sheet(name,score)
                     break
                 
             play_again=input("Do u want to restart the hunt game?:y/n: ")
@@ -124,6 +137,8 @@ def play_game():
                   
         except ValueError as v:
             print("Enter a valid letters")
+
+
 
 
 def main():
