@@ -1,8 +1,23 @@
+import gspread
+from google.oauth2.service_account import Credentials
 import random
 import json
 import os
 import pyfiglet
 from pyfiglet import Figlet
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+CREDS= Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS=CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT=gspread.authorize(SCOPED_CREDS)
+SHEET=GSPREAD_CLIENT.open('scoreboard')
+scores=SHEET.worksheet('score')
+data= scores.get_all_values()
+print(data)
 
 
 def clear_screen():# function to clear the screen
@@ -47,8 +62,7 @@ def print_gameover():
 def print_goodbye():
    f=Figlet(font='big')
    print(f.renderText("Good Bye"))   
-   
-   
+
 
 def correct_letters(g,f):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
@@ -110,10 +124,6 @@ def play_game():
                   
         except ValueError as v:
             print("Enter a valid letters")
-
-
-
-
 
 
 def main():
