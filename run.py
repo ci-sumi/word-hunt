@@ -5,7 +5,7 @@ import json
 import os
 import pyfiglet
 from pyfiglet import Figlet
-from datetime import datetime 
+from datetime import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -66,7 +66,7 @@ def print_goodbye():
 def correct_letters(g,f):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
     HIGHLIGHT_COLOR_WRONG ="\033[91m"
-    RESET_COLOR="\033[0m"
+    RESET_COLOR="\033[0m"  
     result=""
     if len(g) !=len(f):
         raise ValueError("Guess and correct word must be same length")
@@ -139,6 +139,25 @@ def play_game():
             print("Enter a valid letters")
 
 
+def display_highscore():
+    clear_screen()
+    print("=== HIGH SCORES ===")
+    high_scores=scores.get_all_values()[1:]
+    valid_scores=[]
+    for score in high_scores:
+        try:
+            name=score[0]
+            score_value=int(score[1])
+            date=score[2]
+            valid_scores.append((name,score_value,date))
+        except ValueError:
+            continue
+        valid_scores.sort(key=lambda x:x[1],reverse=True)
+        for index,score in enumerate(valid_scores[:10]):
+            print(f"{index+1}.{score[0]}:{score[1]}:Date:{score[2]}")
+    input("Press Enter to return to the main menu\n")
+
+
 
 
 def main():
@@ -151,7 +170,8 @@ def main():
         print("1.Main Menu")
         print("2.Instructions")
         print("3.Play game")
-        print("4.Exit game")
+        print("4.High Scores")
+        print("5.Exit game")
         
         choice=input("Enter your choice:")
         if(choice=='1'):
@@ -164,8 +184,13 @@ def main():
             play_game()
         elif(choice=='4'):
             clear_screen()
+            display_highscore()
+            
+        elif(choice=='5'):
+            clear_screen()
             print_goodbye()
             break
+            
         else:
             print("invalid choice")
             input("Press Enter to continue...")
