@@ -146,14 +146,14 @@ def display_highscore():
     valid_scores=[]
     for score in high_scores:
         try:
-            name=score[0]
+            name=score[0].capitalize()
             score_value=int(score[1])
             date=score[2]
             valid_scores.append((name,score_value,date))
         except ValueError:
             continue
         valid_scores.sort(key=lambda x:x[1],reverse=True)
-        for index,score in enumerate(valid_scores[:10]):
+    for index,score in enumerate(valid_scores[:10]):
             print(f"{index+1}.{score[0]}:{score[1]}:Date:{score[2]}")
     input("Press Enter to return to the main menu\n")
 
