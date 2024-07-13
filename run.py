@@ -102,7 +102,7 @@ def play_game():
             attempts=6
             while attempts>0:
                 print(fruit_random)
-                guess = input("Please do enter a 5 letter fruit name:").lower()
+                guess = input("Please do enter a 5 letter fruit name:\n").lower()
                 if guess==fruit_random.lower():
                     print(f"you guessed the word {fruit_random} correctly")
                     print_you_won()
@@ -128,7 +128,7 @@ def play_game():
                     append_score_to_sheet(name,score)
                     break
                 
-            play_again=input("Do u want to restart the hunt game?:y/n: ")
+            play_again=input("Do u want to restart the hunt game?:y/n: \n")
             if play_again.lower()=="y":
                 continue
             else:
@@ -173,7 +173,7 @@ def main():
         print("4.High Scores")
         print("5.Exit game")
         
-        choice=input("Enter your choice:")
+        choice=input("Enter your choice:\n")
         if(choice=='1'):
             clear_screen()
             welcome_message()
@@ -193,7 +193,7 @@ def main():
             
         else:
             print("invalid choice")
-            input("Press Enter to continue...")
+            input("Press Enter to continue...\n")
 
 
 main()
