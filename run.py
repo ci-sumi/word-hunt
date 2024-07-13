@@ -129,6 +129,7 @@ def play_game():
             play_again=input("Do u want to restart the hunt game?:y/n: \n")
             if play_again.lower()=="y":
                 continue
+                clear_screen()
             else:
                 print_goodbye()
                 break
@@ -179,6 +180,7 @@ def main():
             clear_screen()
             display_instructions()
         elif(choice=='3'):
+            clear_screen()
             play_game()
         elif(choice=='4'):
             clear_screen()
