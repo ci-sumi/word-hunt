@@ -97,11 +97,9 @@ def play_game():
     print("Guess a fruit name,if you want a hint,type'hint'")   
     while True:
         fruit_random=random.choice(list(fruit_dictionary.keys()))
-        print(fruit_random)
         try:
             attempts=6
             while attempts>0:
-                print(fruit_random)
                 guess = input("Please do enter a 5 letter fruit name:\n").lower()
                 if guess==fruit_random.lower():
                     print(f"you guessed the word {fruit_random} correctly")
