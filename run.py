@@ -40,8 +40,8 @@ def print_message_with_border(panel_content):
     
 def display_startmessage():
     fruit_art = """
-    ,--./,-.
-     / #      \\
+     ,--./,-.
+     /       \\
     |          |
      \        /  
       `._,._,'
