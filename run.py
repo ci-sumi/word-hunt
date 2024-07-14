@@ -140,12 +140,9 @@ def append_score_to_sheet(name,score):
 def play_game():
     clear_screen()
     name=input("Please do enter your name:\n")
-    while name=="":
-        console.print("You must enter your name", style="bold red")
+    while name=="" or not name.isalpha() or len(name)>10:
+        console.print("Do enter a valid name (10 letters)", style="bold red")
         name = input("Please enter your name:\n").strip()
-    while not name.isalpha() or len(name)>10:
-            console.print("Please enter a valid name",style="bold red")
-            name = input("Please enter your name:\n").strip() 
     console.print("Guess a fruit name,if you want a hint,type'hint' !")   
     while True:
         fruit_random=random.choice(list(fruit_dictionary.keys()))
@@ -163,20 +160,21 @@ def play_game():
                     print(fruit_dictionary[fruit_random])
                     continue
                 if not guess.isalpha() or len(guess)!=5:
-                    print("Please enter a valid five letters fruit name")
+                    console.print("Please enter a valid five-letter fruit name", style="bold red")
                     continue
             
-                if(guess!=fruit_random.lower()):
-                    attempts -= 1
-                    highlighted = correct_letters(guess,fruit_random)
-                    print(highlighted)
-                    print(f"Incorrect! You have {attempts} attempts left.")
+                # if(guess!=fruit_random.lower()):
+                attempts -= 1
+                highlighted = correct_letters(guess,fruit_random)
+                print(highlighted)
+                print(f"Incorrect! You have {attempts} attempts left.")
+            
                 if attempts==0:
-                    print(f"Out of attempts. The word was'{fruit_random}'.")
                     print_gameover()
                     score=0
                     append_score_to_sheet(name,score)
-                    break
+                    console.print(f"0 attempts.The word was'{fruit_random}'.")
+                    
                 
             play_again=input("Do u want to restart the hunt game?:y/n: \n")
             if play_again.lower()=="y":
