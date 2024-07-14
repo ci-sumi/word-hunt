@@ -39,18 +39,6 @@ def print_message_with_border(panel_content):
     console.print("╚" + "═" * (console.size.width - 2) + "╝", end="")
     
 def display_startmessage():
-    fruit_art = """
-     ,--./,-.
-     /       \\
-    |          |
-     \        /  
-      `._,._,'
-    """
-    # Combine the art and the message
-    combined_message = Text()
-    combined_message.append(fruit_art + "\n")
-    # Print the panel
-    console.print(combined_message,style="bold magenta",justify="center")
     message=Text()
     message.append("Guess the",style="bold yellow")
     message.append("fruity word",style="bold green")
