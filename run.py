@@ -56,13 +56,18 @@ def welcome_message():# welcome function
     input("Press Enter to return the main menu\n")
     
     
-def display_instructions():# function for displaying instructionns
+def display_instructions():
+    """Displays game instructions with styled text """
     clear_screen()
-    print("===INSTRUCTIONS===")
-    print("Try to guess the word")
-    print("You have 6 attempts to guess the correct word")
-    print("You will have hint when you type 'hint'")
-    input("Press Enter to return the main menu\n")
+    instructions_panel = Panel(Text.assemble(
+        ("INSTRUCTIONS", "bold cyan"),
+         "\n\nGuess the word in 6 tries.",
+        "\nType 'hint' for a clue.",
+        justify="center"),
+        title="word-hunt",
+        style="white on blue")
+    print_message_with_border(instructions_panel)
+    console.input("\nPress Enter to return to the main menu...\n")
     
     
     
