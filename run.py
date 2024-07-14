@@ -98,9 +98,14 @@ def print_gameover():
 
     
     
+
 def print_goodbye():
-   f=Figlet(font='big')
-   print(f.renderText("Good Bye"))   
+    """Prints 'Good Bye' message using styled text."""
+    goodbye_panel = Panel(Text.assemble(
+        ("Word Hunt","bold cyan")),
+        title="Good Bye",style="white on blue")
+        
+    print_message_with_border(goodbye_panel)
 
 
 def correct_letters(g,f):
