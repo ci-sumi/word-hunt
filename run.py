@@ -62,7 +62,9 @@ def display_instructions():
     instructions_panel = Panel(Text.assemble(
         ("INSTRUCTIONS", "bold cyan"),
          "\n\nGuess the word in 6 tries.",
-        "\nType 'hint' for a clue.",
+        "\n\nType 'hint' for a clue.",
+        "\n\nMatching letters in the correct position will be shown in[green]",
+        "\n\nLetters that are incorrect will be shown in[red]",
         justify="center"),
         title="word-hunt",
         style="white on blue")
@@ -77,8 +79,12 @@ with open("fruits.json") as file:
         
 
 def print_you_won():
-    f=Figlet(font='big')
-    print(f.renderText("You Won"))
+    """Prints 'You Won' message using styled text."""
+    you_won_panel=Panel(Text.assemble(
+        ("You Won","bold green")),
+        title="Congradulations",
+        style="white on blue")
+    print_message_with_border(you_won_panel)
     
     
 
