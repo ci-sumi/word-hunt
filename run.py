@@ -6,6 +6,12 @@ import os
 import pyfiglet
 from pyfiglet import Figlet
 from datetime import datetime
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
+
+console=Console()
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -21,8 +27,26 @@ data= scores.get_all_values()
 print(data)
 
 
+
 def clear_screen():# function to clear the screen
-    os.system('cls' if os.name=='nt' else "clear")  
+    os.system('cls' if os.name=='nt' else "clear")
+    
+    
+def print_message_with_border(panel_content):
+    """Prints a message within the terminal border."""
+    clear_screen()
+    console.print(panel_content, justify="center", highlight=True)
+    console.print("╚" + "═" * (console.size.width - 2) + "╝", end="")
+    
+
+def print_welcome_message():
+    """Prints the welcome message with styled text."""
+    welcome_panel = Panel(Text.assemble(
+        ("WELCOME TO WORD-HUNT", "bold magenta")),
+        title="Welcome",
+        style="white on blue")
+    print_message_with_border(welcome_panel)
+    
     
     
 def welcome_message():# welcome function
@@ -162,15 +186,17 @@ def main():
    
     while True:
         clear_screen()
-        f=Figlet(font='letters')
-        print(f.renderText("word Hunt"))
+        # f=Figlet(font='letters')
+        # print(f.renderText("WELCOME TO WORD-HUNT"))
+        console.print(Panel(Text.assemble(
+            ("WELCOME TO WORD-HUNT", "bold magenta")
+        ), style="white on blue"))
         print("=== MAIN MENU ===")
         print("1.Main Menu")
         print("2.Instructions")
         print("3.Play game")
         print("4.High Scores")
         print("5.Exit game")
-        
         choice=input("Enter your choice:\n")
         if(choice=='1'):
             clear_screen()
