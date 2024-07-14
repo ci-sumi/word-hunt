@@ -11,13 +11,17 @@ google-auth==2.31.0
 google-auth-oauthlib==1.2.0
 gspread==6.1.2
 idna==3.7
+markdown-it-py==3.0.0
+mdurl==0.1.2
 oauthlib==3.2.2
 platformdirs==3.5.0
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
 pyfiglet==1.0.2
+Pygments==2.18.0
 requests==2.32.3
 requests-oauthlib==2.0.0
+rich==13.7.1
 rsa==4.9
 sqlparse==0.4.4
 typing_extensions==4.9.0
