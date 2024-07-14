@@ -48,14 +48,6 @@ def print_welcome_message():
     print_message_with_border(welcome_panel)
     
     
-    
-def welcome_message():# welcome function
-    clear_screen()
-    print("Try to guess the word")
-    print(f"You have 6 attempts,GOOD LUCK!!")
-    input("Press Enter to return the main menu\n")
-    
-    
 def display_instructions():
     """Displays game instructions with styled text """
     clear_screen()
@@ -106,6 +98,7 @@ def print_goodbye():
         title="Word Hunt",style="white on blue")
         
     print_message_with_border(goodbye_panel)
+    console.input("\nPress do rerun the program to start the game...\n")
 
 
 def correct_letters(g,f):
@@ -221,26 +214,21 @@ def main():
             ("WELCOME TO WORD-HUNT", "bold magenta")
         ), style="white on blue"))
         print("=== MAIN MENU ===")
-        print("1.Main Menu")
-        print("2.Instructions")
-        print("3.Play game")
-        print("4.High Scores")
-        print("5.Exit game")
+        print("1.Instructions")
+        print("2.Play game")
+        print("3.High Scores")
+        print("4.Exit game")
         choice=input("Enter your choice:\n")
         if(choice=='1'):
             clear_screen()
-            welcome_message()
+            display_instructions()
         elif(choice=='2'):
             clear_screen()
-            display_instructions()
+            play_game()
         elif(choice=='3'):
             clear_screen()
-            play_game()
+            display_highscore()   
         elif(choice=='4'):
-            clear_screen()
-            display_highscore()
-            
-        elif(choice=='5'):
             clear_screen()
             print_goodbye()
             break
