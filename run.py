@@ -175,6 +175,8 @@ def play_game():
                 continue
             else:
                 break
+                clear_screen()
+            
                   
         except ValueError as v:
             print("Enter a valid letters")
