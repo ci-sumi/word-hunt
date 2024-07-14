@@ -132,7 +132,13 @@ def append_score_to_sheet(name,score):
 def play_game():
     clear_screen()
     name=input("Please do enter your name:\n")
-    print("Guess a fruit name,if you want a hint,type'hint'")   
+    while name=="":
+        console.print("You must enter your name", style="bold red")
+        name = input("Please enter your name:\n").strip()
+    while not name.isalpha() or len(name)>10:
+            console.print("Please enter a valid name",style="bold red")
+            name = input("Please enter your name:\n").strip() 
+    console.print("Guess a fruit name,if you want a hint,type'hint' !")   
     while True:
         fruit_random=random.choice(list(fruit_dictionary.keys()))
         try:
@@ -140,7 +146,7 @@ def play_game():
             while attempts>0:
                 guess = input("Please do enter a 5 letter fruit name:\n").lower()
                 if guess==fruit_random.lower():
-                    print(f"you guessed the word {fruit_random} correctly")
+                    console.print(f"you guessed the word {fruit_random} correctly")
                     print_you_won()
                     score = attempts*10
                     append_score_to_sheet(name,score)
@@ -168,7 +174,6 @@ def play_game():
             if play_again.lower()=="y":
                 continue
             else:
-                print_goodbye()
                 break
                   
         except ValueError as v:
