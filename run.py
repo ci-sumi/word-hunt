@@ -89,8 +89,13 @@ def print_you_won():
     
 
 def print_gameover():
-    f=Figlet(font='big')
-    print(f.renderText("Game Over"))
+     """Prints 'Game Over' message using styled text."""
+     game_over_panel=Panel(Text.assemble(
+         ("Game Over","bold red")),
+          title="Word Hunt",
+          style="white on blue")
+     print_message_with_border(game_over_panel)
+
     
     
 def print_goodbye():
