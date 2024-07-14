@@ -61,7 +61,7 @@ def display_instructions():
     clear_screen()
     instructions_panel = Panel(Text.assemble(
         ("INSTRUCTIONS", "bold cyan"),
-         "\n\nGuess the word in 6 tries.",
+         "\n\nGuess the fruit-word in 6 tries.",
         "\n\nType 'hint' for a clue.",
         "\n\nMatching letters in the correct position will be shown in[green]",
         "\n\nLetters that are incorrect will be shown in[red]",
