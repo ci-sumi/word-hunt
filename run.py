@@ -38,6 +38,26 @@ def print_message_with_border(panel_content):
     console.print(panel_content, justify="center", highlight=True)
     console.print("╚" + "═" * (console.size.width - 2) + "╝", end="")
     
+def display_startmessage():
+    fruit_art = """
+    ,--./,-.
+     / #      \\
+    |          |
+     \        /  
+      `._,._,'
+    """
+    # Combine the art and the message
+    combined_message = Text()
+    combined_message.append(fruit_art + "\n")
+    # Print the panel
+    console.print(combined_message,style="bold magenta",justify="center")
+    message=Text()
+    message.append("Guess the",style="bold yellow")
+    message.append("fruity word",style="bold green")
+    message.append("and Win",style="bold yellow")
+    console.print(message,justify="center")
+    
+    
 
 def print_welcome_message():
     """Prints the welcome message with styled text."""
@@ -206,7 +226,7 @@ def display_highscore():
     # for index,score in enumerate(valid_scores[:10]):
     #         console.print(f"{rank:<6}{name:<14}{score_value}")
     #         rank+=1
-    input("Press Enter to return to the main menu\n")
+    input("Press Enter to return to the main menu...\n")
 
 
 
@@ -220,7 +240,8 @@ def main():
         console.print(Panel(Text.assemble(
             ("WELCOME TO WORD-HUNT", "bold magenta")
         ), style="white on blue"))
-        console.print("=== MAIN MENU ===",style="bold yellow")
+        display_startmessage()
+        console.print("=== MAIN MENU ===",style="bold white")
         text1=Text()
         text2=Text()
         text3=Text()
