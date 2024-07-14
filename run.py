@@ -102,8 +102,8 @@ def print_gameover():
 def print_goodbye():
     """Prints 'Good Bye' message using styled text."""
     goodbye_panel = Panel(Text.assemble(
-        ("Word Hunt","bold cyan")),
-        title="Good Bye",style="white on blue")
+        ("Good Bye","bold cyan")),
+        title="Word Hunt",style="white on blue")
         
     print_message_with_border(goodbye_panel)
 
@@ -184,7 +184,11 @@ def play_game():
 
 def display_highscore():
     clear_screen()
-    print("=== HIGH SCORES ===")
+    console.print(Panel(Text.assemble(
+        ("HIGH SCORES","bold cyan")),
+        style="white on blue"))
+    console.print(f"{'Rank':<6}{'PlayerName':<20}{'Score':<10}{'Date':<20}")
+    
     high_scores=scores.get_all_values()[1:]
     valid_scores=[]
     for score in high_scores:
@@ -196,8 +200,12 @@ def display_highscore():
         except ValueError:
             continue
         valid_scores.sort(key=lambda x:x[1],reverse=True)
-    for index,score in enumerate(valid_scores[:10]):
-            print(f"{index+1}.{score[0]}:{score[1]}:Date:{score[2]}")
+    for rank,(name, score_value,date) in enumerate(valid_scores[:10], start=1):
+         console.print(f"{rank:<6}{name:<20}{score_value:<10}{date:<20}")
+    # rank=1
+    # for index,score in enumerate(valid_scores[:10]):
+    #         console.print(f"{rank:<6}{name:<14}{score_value}")
+    #         rank+=1
     input("Press Enter to return to the main menu\n")
 
 
