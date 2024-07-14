@@ -3,16 +3,18 @@ from google.oauth2.service_account import Credentials
 import random
 import json
 import os
-import pyfiglet
-from pyfiglet import Figlet
+# import pyfiglet
+# from pyfiglet import Figlet
 from datetime import datetime
 from rich.console import Console
 from rich.panel import Panel
-from rich.table import Table
+# from rich.table import Table
 from rich.text import Text
 
 console=Console()
 
+"""Define the scope for accessing Google sheets 
+and Google Drive"""
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -27,11 +29,11 @@ data= scores.get_all_values()
 print(data)
 
 
-
+"""Function to clear the terminal screen"""
 def clear_screen():# function to clear the screen
     os.system('cls' if os.name=='nt' else "clear")
     
-    
+        
 def print_message_with_border(panel_content):
     """Prints a message within the terminal border."""
     clear_screen()
@@ -39,6 +41,7 @@ def print_message_with_border(panel_content):
     console.print("╚" + "═" * (console.size.width - 2) + "╝", end="")
     
 def display_startmessage():
+    """Function to display the start message with styled text"""
     message=Text()
     message.append("Guess the",style="bold yellow")
     message.append("fruity word",style="bold green")
@@ -59,6 +62,7 @@ def print_welcome_message():
 def display_instructions():
     """Displays game instructions with styled text """
     clear_screen()
+    # Create a styled panel with game instructions
     instructions_panel = Panel(Text.assemble(
         ("INSTRUCTIONS", "bold cyan"),
          "\n\nGuess the fruit-word in 6 tries.",
@@ -68,11 +72,13 @@ def display_instructions():
         justify="center"),
         title="word-hunt",
         style="white on blue")
+     # Print the instructions panel using the helper function
     print_message_with_border(instructions_panel)
+     # Prompt the user to press Enter to return to the main menu
     console.input("\nPress Enter to return to the main menu...\n")
     
     
-    
+"""Open and read the contents of the "fruits.json" file"""  
 with open("fruits.json") as file:
         data=file.read()
         fruit_dictionary=json.loads(data)
@@ -108,7 +114,7 @@ def print_goodbye():
     print_message_with_border(goodbye_panel)
     console.input("\n Do rerun the program to start the game...\n")
 
-
+"""Returns a formatted string with highlight correct and incorrect letters"""
 def correct_letters(g,f):
     HIGHLIGHT_COLOR_CORRECT ="\033[92m"
     HIGHLIGHT_COLOR_WRONG ="\033[91m"
@@ -129,6 +135,7 @@ def correct_letters(g,f):
 
 
 def append_score_to_sheet(name,score):
+    """Appends a new row with details to a Google Sheets spreadsheet."""
     from datetime import time
     
     date = datetime.now().strftime("%d/%m/%Y")
@@ -138,59 +145,62 @@ def append_score_to_sheet(name,score):
     
 
 def play_game():
-    clear_screen()
+    clear_screen()# Clear the screen before starting the game
     name=input("Please do enter your name:\n")
     while name=="" or not name.isalpha() or len(name)>10:
-        console.print("Do enter a valid name (10 letters)", style="bold red")
+        console.print("Do enter a valid name (<10 letters)", style="bold red")
         name = input("Please enter your name:\n").strip()
     console.print("Guess a fruit name,if you want a hint,type'hint' !")   
     while True:
+        # Choose a random fruit from the dictionary
         fruit_random=random.choice(list(fruit_dictionary.keys()))
         try:
-            attempts=6
+            attempts=6  # Number of attempts allowed
             while attempts>0:
-                guess = input("Please do enter a 5 letter fruit name:\n").lower()
+                guess = input("Plz do enter a 5 letter fruit name:\n").lower()
+                 # Check if the guess is correct
                 if guess==fruit_random.lower():
-                    console.print(f"you guessed the word {fruit_random} correctly")
+                    console.print(f"The word {fruit_random} is correct")
                     print_you_won()
                     score = attempts*10
                     append_score_to_sheet(name,score)
                     break
+                 # If the player asks for a hint
                 if guess=="hint".lower():
                     print(fruit_dictionary[fruit_random])
                     continue
+                # If the guess is not a valid 5-letter word
                 if not guess.isalpha() or len(guess)!=5:
-                    console.print("Please enter a valid five-letter fruit name", style="bold red")
+                    console.print("Please enter a valid five-letter fruit name"
+                                  , style="bold red")
                     continue
             
-                # if(guess!=fruit_random.lower()):
+                # Reduce attempts and show correct/incorrect letters
                 attempts -= 1
                 highlighted = correct_letters(guess,fruit_random)
                 print(highlighted)
                 print(f"Incorrect! You have {attempts} attempts left.")
-            
+             # If no attempts left, show game over and record score
                 if attempts==0:
                     print_gameover()
                     score=0
                     append_score_to_sheet(name,score)
                     console.print(f"0 attempts.The word was'{fruit_random}'.")
-               
+            # Ask if the player wants to play again  
             play_again=input("Do u want to restart the hunt game?:y/n: \n")
             if play_again.lower()=="y":
                 continue
             else:
                 clear_screen()
-                break
-                
-                
-                
-            
+                break    
                   
         except ValueError as v:
-            print("Enter a valid letters")
+            print("Enter a valid letters")# Handle ValueError exceptions
+
 
 
 def display_highscore():
+    """Display the top 10 high scores from a spreadsheet in formatted table."""
     clear_screen()
     console.print(Panel(Text.assemble(
         ("HIGH SCORES","bold cyan")),
@@ -207,20 +217,17 @@ def display_highscore():
             valid_scores.append((name,score_value,date))
         except ValueError:
             continue
+         # Sort valid_scores by score_value in descending order
         valid_scores.sort(key=lambda x:x[1],reverse=True)
+          # Print the top 10 scores with rank, name, score, and date
     for rank,(name, score_value,date) in enumerate(valid_scores[:10], start=1):
          console.print(f"{rank:<6}{name:<20}{score_value:<10}{date:<20}")
-    # rank=1
-    # for index,score in enumerate(valid_scores[:10]):
-    #         console.print(f"{rank:<6}{name:<14}{score_value}")
-    #         rank+=1
     input("Press Enter to return to the main menu...\n")
 
 
 
-
 def main():
-   
+    """Main function to run the Word-Hunt game application."""
     while True:
         clear_screen()
         # f=Figlet(font='letters')
