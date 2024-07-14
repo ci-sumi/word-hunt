@@ -174,14 +174,16 @@ def play_game():
                     score=0
                     append_score_to_sheet(name,score)
                     console.print(f"0 attempts.The word was'{fruit_random}'.")
-                    
-                
+               
             play_again=input("Do u want to restart the hunt game?:y/n: \n")
             if play_again.lower()=="y":
+                clear_screen()
                 continue
             else:
                 clear_screen()
                 break
+                
+                
                 
             
                   
