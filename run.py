@@ -180,8 +180,9 @@ def play_game():
             if play_again.lower()=="y":
                 continue
             else:
-                break
                 clear_screen()
+                break
+                
             
                   
         except ValueError as v:
