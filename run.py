@@ -98,7 +98,7 @@ def print_goodbye():
         title="Word Hunt",style="white on blue")
         
     print_message_with_border(goodbye_panel)
-    console.input("\nPress do rerun the program to start the game...\n")
+    console.input("\n Do rerun the program to start the game...\n")
 
 
 def correct_letters(g,f):
