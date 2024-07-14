@@ -220,11 +220,23 @@ def main():
         console.print(Panel(Text.assemble(
             ("WELCOME TO WORD-HUNT", "bold magenta")
         ), style="white on blue"))
-        print("=== MAIN MENU ===")
-        print("1.Instructions")
-        print("2.Play game")
-        print("3.High Scores")
-        print("4.Exit game")
+        console.print("=== MAIN MENU ===",style="bold yellow")
+        text1=Text()
+        text2=Text()
+        text3=Text()
+        text4=Text()
+        text1.append("1.",style="bold blue")
+        text2.append("2.",style="bold blue")
+        text3.append("3.",style="bold blue")
+        text4.append("4.",style="bold blue")
+        text1.append("Instructions")
+        text2.append("Play game")
+        text3.append("High Scores")
+        text4.append("Exit game")
+        console.print(text1)
+        console.print(text2)
+        console.print(text3)
+        console.print(text4)
         choice=input("Enter your choice:\n")
         if(choice=='1'):
             clear_screen()
@@ -241,7 +253,7 @@ def main():
             break
             
         else:
-            print("invalid choice")
+            console.print("invalid choice",style="bold red")
             input("Press Enter to continue...\n")
 
 
