@@ -50,3 +50,8 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
 9. **High Scores**:
    - View the top 10 scores, including player names, scores, and dates.
    - Compete to achieve the highest score by guessing correctly with the fewest attempts.
+
+## Site Owner Goals
+ - Provide a Challenging and Rewarding Experience: Offer users a simple yet engaging game that tests their skills and provides a sense of accomplishment.
+ - Ensure App Functionality and User-Friendliness: Deliver an app that operates smoothly, with intuitive controls and clear instructions, ensuring an enjoyable user experience.
+ - Encourage User Engagement and Improvement: Motivate users to revisit the game by setting score improvement as a goal, fostering a desire for ongoing participation and achievement.
