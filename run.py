@@ -43,9 +43,9 @@ def print_message_with_border(panel_content):
 def display_startmessage():
     """Function to display the start message with styled text"""
     message=Text()
-    message.append("Guess the",style="bold yellow")
-    message.append("fruity word",style="bold green")
-    message.append("and Win",style="bold yellow")
+    message.append("Guess the ",style="bold yellow")
+    message.append("fruity word ",style="bold green")
+    message.append("and Win ",style="bold yellow")
     console.print(message,justify="center")
     
     
@@ -86,11 +86,13 @@ with open("fruits.json") as file:
 
 def print_you_won():
     """Prints 'You Won' message using styled text."""
-    you_won_panel=Panel(Text.assemble(
-        ("You Won","bold green")),
-        title="Congradulations",
-        style="white on blue")
+    you_won_panel = Panel(
+        Text.assemble(("You Won", "bold green"), justify="center"),
+        title="Congratulations",
+        style="white on blue"
+    )
     print_message_with_border(you_won_panel)
+
     
     
 
