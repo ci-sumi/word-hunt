@@ -11,37 +11,22 @@
     <title>Word Hunt</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background: black;
-            color: white;
             text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
         }
 
-        .terminal-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 90%;
-            max-width: 400px;
-        }
+        /**
+        * Default styles for xterm.js
+        */
 
         .xterm {
-            font-feature-settings: "liga" 0;
+            font-feature-settings: "liga"0;
             position: relative;
+            margin-top: 40px;
             user-select: none;
             -ms-user-select: none;
             -webkit-user-select: none;
-            width: 100%;
-            max-width: 100%;
-            height: 200px; /* Adjust height as needed */
         }
 
         .xterm.focus,
@@ -52,6 +37,10 @@
         .xterm .xterm-helpers {
             position: absolute;
             top: 0;
+            /**
+        * The z-index of the helpers must be higher than the canvases in order for
+        * IMEs to appear on top.
+        */
             z-index: 5;
         }
 
@@ -59,6 +48,7 @@
             padding: 0;
             border: 0;
             margin: 0;
+            /* Move textarea out of the screen to the far left, so that the cursor is not visible */
             position: absolute;
             opacity: 0;
             left: -9999em;
@@ -66,12 +56,14 @@
             width: 0;
             height: 0;
             z-index: -5;
+            /** Prevent wrapping so the IME appears against the textarea at the correct position */
             white-space: nowrap;
             overflow: hidden;
             resize: none;
         }
 
         .xterm .composition-view {
+            /* TODO: Composition position got messed up somewhere */
             background: #000;
             color: #FFF;
             display: none;
@@ -85,6 +77,7 @@
         }
 
         .xterm .xterm-viewport {
+            /* On OS X this is required in order for the scroll bar to appear fully opaque */
             background-color: #000;
             overflow-y: scroll;
             cursor: default;
@@ -93,7 +86,8 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 100%;
+            background-color: rgb(0, 0, 0);
+            width: 730px;
         }
 
         .xterm .xterm-screen {
@@ -126,6 +120,7 @@
         }
 
         .xterm.enable-mouse-events {
+            /* When mouse events are enabled (eg. tmux), revert to the standard pointer cursor */
             cursor: default;
         }
 
@@ -134,6 +129,7 @@
         }
 
         .xterm.column-select.focus {
+            /* Column selection mode */
             cursor: crosshair;
         }
 
@@ -165,32 +161,14 @@
         }
 
         button {
-            width: 80%;
-            max-width: 200px;
+            width: 200px;
             height: 40px;
             background-color: blue;
             border: 1px solid grey;
-            color: white;
+            color: black;
             text-transform: uppercase;
             margin: 10px;
             border-radius: 8px;
-        }
-
-        @media (min-width: 600px) {
-            .terminal-container {
-                flex-direction: row;
-                justify-content: space-around;
-                width:60%
-            }
-
-            .xterm {
-                height: 300px; /* Adjust height as needed */
-            }
-
-            button {
-                width: 40%;
-                max-width: 150px;
-            }
         }
     </style>
             
