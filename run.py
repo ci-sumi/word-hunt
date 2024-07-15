@@ -39,6 +39,7 @@ def print_message_with_border(panel_content):
     clear_screen()
     console.print(panel_content, justify="center", highlight=True)
     console.print("╚" + "═" * (console.size.width - 2) + "╝", end="")
+  
     
 def display_startmessage():
     """Function to display the start message with styled text"""
@@ -49,7 +50,6 @@ def display_startmessage():
     console.print(message,justify="center")
     
     
-
 def print_welcome_message():
     """Prints the welcome message with styled text."""
     welcome_panel = Panel(Text.assemble(
@@ -95,7 +95,6 @@ def print_you_won():
 
     
     
-
 def print_gameover():
      """Prints 'Game Over' message using styled text."""
      game_over_panel=Panel(Text.assemble(
@@ -106,7 +105,6 @@ def print_gameover():
 
     
     
-
 def print_goodbye():
     """Prints 'Good Bye' message using styled text."""
     goodbye_panel = Panel(Text.assemble(
@@ -115,6 +113,7 @@ def print_goodbye():
         
     print_message_with_border(goodbye_panel)
     console.input("\n Do rerun the program to start the game...\n")
+
 
 """Returns a formatted string with highlight correct and incorrect letters"""
 def correct_letters(g,f):
