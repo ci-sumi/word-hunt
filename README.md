@@ -1,32 +1,52 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Word-Hunt
+# <span style="color:blue">Welcome to Word-Hunt</span>,a fun interactive fruit themed word guessing game!
 
-Welcome,
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+Word-Hunt is a terminal-based game where players guess a hidden fruit word within six attempts. This engaging and educational game provides a blend of luck and logic, offering players a delightful break from their daily routine. Not only does it enhance problem-solving and vocabulary skills, but it also adds a touch of relaxation and fun by focusing on the world of fruits.
 
-## Reminders
+Players receive immediate feedback on their guesses, with correct and incorrect letters highlighted to guide their next move. If you're stuck, you can type 'hint' to get a clue. The game tracks high scores using Google Sheets, making each game session competitive and rewarding.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.herokuapp.com/)
 
-## Creating the Heroku app
+![Site Mockup]???
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## How to Play
+1. **Start the Game**:
+   - Launch the game from your terminal.
+   - You will be greeted with a welcome message and the main menu.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+2. **Main Menu Options**:
+   - **Instructions**: View the game instructions.
+   - **Play Game**: Start a new game.
+   - **High Scores**: View the top scores.
+   - **Exit Game**: Quit the game.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+3. **Enter Your Name**:
+   - When you choose to play the game, you will be prompted to enter your name.
+   - Ensure your name is less than 10 letters and contains only alphabets.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+4. **Guess the Word**:
+   - The game will randomly select a hidden fruit word.
+   - You have six attempts to guess the word.
+   - Enter a 5-letter fruit name as your guess.
 
-Connect your GitHub repository and deploy as normal.
+5. **Hints**:
+   - If you need help, type 'hint' to receive a clue about the fruit.
+   - Use hints wisely to aid in guessing the correct word.
 
-## Constraints
+6. **Feedback on Guesses**:
+   - Correct letters in the right position will be highlighted in green.
+   - Incorrect letters will be highlighted in red.
+   - Use this feedback to refine your guesses.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+7. **Winning and Scoring**:
+   - If you guess the word correctly, a congratulatory message will be displayed.
+   - Your score is calculated based on the remaining attempts and recorded in the high scores list.
+   - If you exhaust all attempts without guessing the word, the game will reveal the correct word.
 
----
+8. **Play Again**:
+   - After each game, you can choose to play again or return to the main menu.
 
-Happy coding!
+9. **High Scores**:
+   - View the top 10 scores, including player names, scores, and dates.
+   - Compete to achieve the highest score by guessing correctly with the fewest attempts.
