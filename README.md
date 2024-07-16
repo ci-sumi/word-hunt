@@ -230,6 +230,17 @@ Random Word Selection: Confirmed a new word is chosen randomly at the start of e
 
 ## Credits
 ### Resources Used
+- [W3Schools](https://www.w3schools.com/)  
+- [Stack Overflow](https://stackoverflow.com/)
+-  [How to get current date and time in Python](https://www.programiz.com/python-programming/datetime/current-datetime)
+- [The Python Rich Package](https://realpython.com/python-rich-package/)
+- [Python 3.12.4 documentation](https://docs.python.org/3/)
+- I followed the steps in the Code Institute Python walkthrough project - Love Sandwiches when setting up my Google Sheets API and Deployement
+
+## Acknowledgments
+  - Antonio Rodriguez(Mentor)
+  - Tomislav Dukez(CI Alumini)
+
 
 
 
