@@ -179,6 +179,54 @@ The following steps were then taken:
 15. Click View to view the deployed site.
 
 The site is now live and operational.
+### User Input Testing
+ - Username Input:
+   - Ensured that usernames cannot be empty or consist solely of whitespace.
+   - Validated that usernames must contain only letters
+   - Implemented input validation using the strip() method to remove excess whitespace.
+- Menu Options Selection:
+  - Validated error handling for inputs numbers from (1-4) that do not match any menu options, providing appropriate feedback.
+- Guess Input:
+
+  - Verified that guesses must be exactly five characters long.
+  - Implemented validation to reject guesses containing numbers.
+  - Integrated validation to ensure guesses are actual words from the json file.
+- Feedback Messages
+  - Ensured clear and informative feedback messages for each type of input validation.
+  - Verified that users receive appropriate information regarding game progress and outcomes.
+- Other Game Features Testing
+Random Word Selection: Confirmed a new word is chosen randomly at the start of each game session.
+
+- Chances and Game Over: Tested reduction of chances with each guess and ensured game termination upon running out of chances or guessing correctly.
+
+- Leaderboard Functionality: Verified leaderboard updates upon correct guesses and accurate sorting and display of high scores.
+
+- Terminal Functionality: Ensured terminal clears appropriately between game sessions and displays updated information correctly.
+
+- Environment and Deployment
+  - Conducted tests locally and on Heroku to ensure consistency across different environments.
+  - Ran the README.md through Grammarly and verified all links before final submission.
+
+### Libraries and Technologies Used
+- Programming Languages:
+  - Python:Used as the primary programming language for developing the Word-Hunt game.
+
+- Libraries:
+  - gspread: Used for accessing Google Sheets API to store and retrieve leaderboard scores.
+  - google-auth: Utilized for handling authentication with Google services, necessary for accessing Google Sheets and Drive.
+  - random: Employed for generating random choices, specifically for selecting words from a list of fruits.
+  - json: Used to read and parse data from the "fruits.json" file, which contains the dictionary of fruits used in the game.
+  - os: Utilized for clearing the terminal screen, providing a cleaner interface during gameplay.
+  - datetime: Used for capturing and formatting timestamps to record scores with dates in the leaderboard.
+  - rich: Used for styling text output in the terminal, providing a more interactive and visually appealing user interface.
+
+- Tools and Platforms:
+  - Google Sheets: Used as a cloud-based spreadsheet for storing and displaying leaderboard scores.
+  - Heroku: Deployment platform used to host and run the Word-Hunt game online.
+- Documentation and Collaboration
+  - README.md: Used for documenting game instructions, setup, and information about libraries and technologies used.
+ 
+
 
 ## Credits
 ### Resources Used
