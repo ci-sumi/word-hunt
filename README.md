@@ -1,8 +1,8 @@
 # Word-Hunt
 # <span style="color:blue">Welcome to Word-Hunt</span>,a fun interactive fruit themed word guessing game!
 
+Word-Hunt is a terminal-based game where players guess a hidden 5 letter fruit word within six attempts. This fun and engaging game offers a blend of luck and logic, giving players a delightful break from their daily routine. While it focuses on the simple joy of guessing fruit names, it also subtly enhances problem-solving and vocabulary skills, making it both entertaining and educational.
 
-Word-Hunt is a terminal-based game where players guess a hidden fruit word within six attempts. This engaging and educational game provides a blend of luck and logic, offering players a delightful break from their daily routine. Not only does it enhance problem-solving and vocabulary skills, but it also adds a touch of relaxation and fun by focusing on the world of fruits.
 
 Players receive immediate feedback on their guesses, with correct and incorrect letters highlighted to guide their next move. If you're stuck, you can type 'hint' to get a clue. The game tracks high scores using Google Sheets, making each game session competitive and rewarding.
 
@@ -75,21 +75,38 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
    Overall, the initial flowchart served as a foundational blueprint, guiding the development process and ensuring alignment with the game's objectives. However, continuous iteration and refinement were essential to incorporate all planned elements and optimize the game's functionality and user experience.
    [!Flow chart] 
 ## Features
-  ### Title and Introduction Section
-  - Upon entering the site, users are welcomed with a straightforward and inviting interface introducing them to the Word-Hunt game.
-  - The welcome message is displayed using a panel from the Rich library, enhancing the visual appeal and clarity of the greeting, setting the stage for an engaging game experience.
-  [!Welcomescreen]
-  ### Options menu
-  #### Instructions:
-  -  The Word-Hunt game menu offers intuitive navigation and essential features.Player choose 1 with Instructions to understand gameplay and objectives clearly.
+  ### Welcome Screen
+   - User-Friendly Interface: The game starts with a warm and inviting welcome screen created using rich text styling.
+  ### Menu Options
+    The welcome screen presents the main menu with the following options:
+   - Instructions:  Provides clear guidelines on how to play the game, ensuring players understand the rules and objectives.
+   - Play Game: Initiates the game where players guess a hidden 5 letter fruit word within six attempts. Players receive feedback on their guesses with correctly guessed letters highlighted in green and incorrect letters in red. Hints are available to aid progress.
+     - Player Name Input: Players are prompted to enter their name, which is validated to ensure it is less than 10 letters and alphabetic.
+ - High Scores: Displays the top 10 high scores achieved by players, promoting competition and encouraging replayability.
+ - Exit Game: Allows users to gracefully exit the game when they are finished, ensuring a smooth user interaction.
+  [Welcomescreen](docs/readme_images/welcome_scrren.png)
+  ### Main Menu
+  - Instructions:Provides clear guidelines on how to play the game, ensuring players understand the rules and objectives.
+ 
 
-  #### Play Game
-  Player choose 2 Play Game allows them to guess a hidden fruit word within six attempts, with feedback on each guess and the option for hints to aid their progress.
-  #### High Scores 
-  - Player choose 3 High Scores showcases the top 10 scores achieved by players, fostering competition and encouraging replayability.
-  #### Exit Game
-   - Player choose 4 Finally, Exit Game provides a graceful exit option for a seamless user experience.
-   - If player choose an invalid number, the game will prompt you to enter a valid option (1, 2, 3, or 4).
+  ### Gameplay
+  - Guessing the Word:Players are required to guess a hidden fruit word within six attempts. Incorrect guesses decrease the number of attempts left.
+  - Hints: Players can type 'hint' to receive a clue about the hidden word.
+  - Feedback: Correct letters in the correct position are highlighted in green, while incorrect letters are highlighted in red.
+  - Victory and Defeat: If the player guesses the word correctly within six attempts, a "You Won" message is displayed. If they fail to guess the word, a "Game Over" message is shown along with the correct word.
+  ### High Scores Tracking
+  - Google Sheets Integration: Scores are recorded and tracked using Google Sheets. This allows for persistent high score tracking across game sessions.
+  - Leaderboard Display: The top 10 high scores are displayed in a formatted table, showing rank, player name, score, and date achieved. 
+  
+  ### User Feedback and Error Handling
+   - Invalid Input Handling:The game handles invalid inputs gracefully, prompting users to enter valid options when they make a mistake.
+   - Case-Insensitive Input: The game accepts both lower and upper case inputs for guesses, converting them to a uniform format internally.
+   - Clear Screen Functionality: The game uses a function to clear the terminal screen at various points to enhance readability and provide a clean interface.
+
+   ### End Game Options
+   - Replayability: After each game, players are asked if they want to play again. Choosing 'yes' restarts the game, allowing for continuous play.
+   - Exit Option: Players can choose to exit the game at any point, with a graceful exit message displayed.
+
 
   [!Menu]
 
