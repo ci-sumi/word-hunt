@@ -77,26 +77,38 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
 ## Features
   ### Welcome Screen
    - User-Friendly Interface: The game starts with a warm and inviting welcome screen created using rich text styling.
+    ![Welcomescreen](docs/readme_images/welcome_scrren.png)
   ### Menu Options
     The welcome screen presents the main menu with the following options:
    - Instructions:  Provides clear guidelines on how to play the game, ensuring players understand the rules and objectives.
+   ![Instructions](docs/readme_images/instructions.png)
    - Play Game: Initiates the game where players guess a hidden 5 letter fruit word within six attempts. Players receive feedback on their guesses with correctly guessed letters highlighted in green and incorrect letters in red. Hints are available to aid progress.
      - Player Name Input: Players are prompted to enter their name, which is validated to ensure it is less than 10 letters and alphabetic.
+     
  - High Scores: Displays the top 10 high scores achieved by players, promoting competition and encouraging replayability.
  - Exit Game: Allows users to gracefully exit the game when they are finished, ensuring a smooth user interaction.
-  [Welcomescreen](docs/readme_images/welcome_scrren.png)
-  ### Main Menu
-  - Instructions:Provides clear guidelines on how to play the game, ensuring players understand the rules and objectives.
+ - By implementing user choice validation, the game ensures that users only input valid menu options, reducing errors and guiding them through the game's interface effectively.
+ ![userchoicevalidation](docs/readme_images/userchoice_validation.png)
  
 
   ### Gameplay
+  - Players are prompted to enter their name, which is validated to ensure it is alphabetic and less than 10 letters.
+  ![username_validation](docs/readme_images/username_validation.png)
   - Guessing the Word:Players are required to guess a hidden fruit word within six attempts. Incorrect guesses decrease the number of attempts left.
+  ![gamestart](docs/readme_images/game_start.png)
   - Hints: Players can type 'hint' to receive a clue about the hidden word.
+  ![hint](docs/readme_images/hint.png)
   - Feedback: Correct letters in the correct position are highlighted in green, while incorrect letters are highlighted in red.
+  ![highlightletter](docs/readme_images/highlight_letters.png)
   - Victory and Defeat: If the player guesses the word correctly within six attempts, a "You Won" message is displayed. If they fail to guess the word, a "Game Over" message is shown along with the correct word.
+  ![you_won](docs/readme_images/you_won.png)
+  ![game_over](docs/readme_images/game_over.png)
   ### High Scores Tracking
   - Google Sheets Integration: Scores are recorded and tracked using Google Sheets. This allows for persistent high score tracking across game sessions.
-  - Leaderboard Display: The top 10 high scores are displayed in a formatted table, showing rank, player name, score, and date achieved. 
+  - Leaderboard Display: The top 10 high scores are displayed in a formatted table, showing rank, player name, score, and date achieved.
+  - The Leaderboard feature in my Word-Hunt game leverages Google Sheets accessed via the Google Drive and Google Sheets APIs hosted on the Google Cloud Platform. Secure credentials for API access were managed in creds.json, excluded from version control using .gitignore, and configured as Heroku Config Vars for runtime access. Scores are organized by player name,score and date, motivating players to revisit and achieve top scores daily. Data sorting and formatting within the leaderboard functionality were achieved using rich for styling, datetime for timestamp management, and panel for structured interface presentation.
+  ![high_scores](docs/readme_images/high_scores.png)
+  ![google_sheet](docs/readme_images/google_sheet.png)
   
   ### User Feedback and Error Handling
    - Invalid Input Handling:The game handles invalid inputs gracefully, prompting users to enter valid options when they make a mistake.
@@ -106,6 +118,39 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
    ### End Game Options
    - Replayability: After each game, players are asked if they want to play again. Choosing 'yes' restarts the game, allowing for continuous play.
    - Exit Option: Players can choose to exit the game at any point, with a graceful exit message displayed.
+   ![exit_gam](docs/readme_images/exit_game.png)
+   ### Future Features
+   - I plan to enhance the Word-Hunt game by replacing the static JSON file with a dynamic dictionary API to fetch words. This API integration will allow for a more varied and engaging gameplay experience with a broader range of word choices.
+   -  Incorporate images related to the guessed words. For example, when a player correctly guesses "apple," display an image of an apple alongside the confirmation message. This visual reinforcement can enhance the gaming experience and reinforce learning.
+   ### Data Model for Word-Hunt Game
+   1. Google Sheets Integration
+Google Sheets: Utilized for storing and managing game scores.
+Spreadsheet: Named "scoreboard".
+Worksheet: "score" within the "scoreboard" spreadsheet.
+2. Game Components
+Game Logic: Implemented using Python.
+Console Interaction: Managed through the rich library for enhanced text styling and user interface.
+3. Data Flow and Storage
+Credentials: Stored securely in creds.json for Google Sheets API access.
+Score Recording: Appends player name, score, and date to the Google Sheets upon game completion.
+Data Structure: Each entry consists of three fields: Player Name, Score, and Date.
+4. Game Features
+Start Menu: Displays options such as Instructions, Play Game, High Scores, and Exit Game.
+Instructions: Displays game rules and hints using styled text.
+Gameplay:
+Guessing Mechanism: Players guess a 5-letter fruit word with hints available.
+Attempts: Limited to 6 tries per game session.
+Outcome: Displays whether the guess is correct or incorrect, deducting attempts accordingly.
+5. High Scores Display
+Top Scores: Displays the top 10 scores from the Google Sheets.
+Sorted: Scores are sorted in descending order based on the score value.
+6. Main Program Flow
+Main Function: Controls the flow of the game from start to finish.
+Loop: Continues until the player chooses to exit.
+7. Additional Libraries
+Dependencies:
+gspread: Python API for Google Sheets.
+rich: Used for styling and formatting console output.
 
 
   [!Menu]
