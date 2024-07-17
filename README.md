@@ -66,14 +66,13 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
    - As a user, I want the game to challenge my problem-solving skills and expand my vocabulary.
 
    ## Logic Flow
-   I used Lucid Chart to create a flowchart that outlines the sequential steps and interactions necessary for the Word-Hunt game. This planning tool was invaluable as it helped me visualize the required functions and their integration throughout the game's development process.
+   I used draw.io to create a flowchart that detailed the sequential steps and interactions essential for developing the Word-Hunt game. This planning tool was extremely useful as it allowed me to visualize the necessary functions and their integration throughout the game's development.
 
-   Initially, the flowchart provided a comprehensive overview of the game's structure, highlighting key functionalities and their interdependencies. However, as the project evolved, additional elements and features were integrated into the game, which are not fully represented in the initial flowchart.
+At first, the flowchart provided a thorough overview of the game's structure, emphasizing key functionalities and their interdependencies. However, as the project progressed, additional elements and features were added to the game, which are not fully represented in the initial flowchart.
 
-   Furthermore, the flowchart facilitated the identification of essential objects required for implementation. I particularly focused on leveraging Object-Oriented Programming principles to enhance code modularity and scalability, ensuring a robust and maintainable game application.
 
-   Overall, the initial flowchart served as a foundational blueprint, guiding the development process and ensuring alignment with the game's objectives. However, continuous iteration and refinement were essential to incorporate all planned elements and optimize the game's functionality and user experience.
-   [!Flow chart] 
+In summary, the initial flowchart served as a foundational blueprint, guiding the development process and ensuring alignment with the game's objectives. Nonetheless, continuous iteration and refinement were necessary to incorporate all planned elements and optimize the game's functionality and user experience.
+![Flow chart](docs/readme_images/word_hunt_flow_chart.jpg)
 ## Features
   ### Welcome Screen
    - User-Friendly Interface: The game starts with a warm and inviting welcome screen created using rich text styling.
@@ -157,28 +156,6 @@ rich: Used for styling and formatting console output.
 
 
 
-### Deployment
-The site was deployed via Heroku, and the live link can be found here: [Word-hunt](https://word-hunt-73b4f6b952fd.herokuapp.com/)
-
-Before deploying to Heroku pip3 freeze > requirements.txt was used to add all the dependencies required to the requirements.txt file. This is required for the game to run on Heroku.
-The following steps were then taken:
-1. Log in to Heroku or create an account.
-2. On the main page click the button labelled New in the top right corner and from the drop-down menu select "Create New App".
-3. Enter a unique and meaningful app name.
-4. Next select your region.
-5. Click on the Create App button.
-6. Click on the Settings Tab and scroll down to Config Vars.
-7. Input CREDS and the content of your Google Sheet API creds file as another config var and click add.
-8. Next, scroll down to the Buildpack section click Add Buildpack select Python and click Save Changes
-9. Repeat step 8 to add node.js. Note: The Buildpacks must be in the correct order. If not click and drag them to move into the correct order.
-10. Scroll to the top of the page and choose the Deploy tab.
-11. Select Github as the deployment method.
-12. Confirm you want to connect to GitHub.
-13. Search for the repository name and click the connect button.
-14. Scroll to the bottom of the deploy page and either click Enable Automatic Deploys for automatic deploys or Deploy Branch to deploy manually. Manually deployed branches will need re-deploying each time the repo is updated.
-15. Click View to view the deployed site.
-
-The site is now live and operational.
 ### User Input Testing
  - Username Input:
    - Ensured that usernames cannot be empty or consist solely of whitespace.
@@ -225,8 +202,58 @@ Random Word Selection: Confirmed a new word is chosen randomly at the start of e
   - Heroku: Deployment platform used to host and run the Word-Hunt game online.
 - Documentation and Collaboration
   - README.md: Used for documenting game instructions, setup, and information about libraries and technologies used.
- 
 
+## Known Bugs
+Visual Issue on "Exit, You Won" and "Game Over" Messages
+Known Bugs:
+There is an anomaly where a black artifact appears on the display of the "Exit, You Won" and "Game Over" messages.
+Description:
+Upon displaying the "Exit, You Won" and "Game Over" messages, a visual artifact in the form of a black mark can be observed on the screen. This issue affects the aesthetic quality of these messages.
+![you_won](docs/readme_images/you_won.png)
+![game_over](docs/readme_images/game_over.png)
+![exit](docs/readme_images/exit_game.png)
+
+
+ ## Fixed bugs
+
+ ### Issue:
+Originally, I used a dictionary to shuffle my list of fruit words, but the code became lengthy and less manageable over time.
+### Solution(Refactored Approach:):
+I refactored the code by utilizing a JSON file, which streamlined the process significantly. Now, shuffling the fruit words is straightforward and more efficient.
+
+- By transitioning from a dictionary within the code to utilizing a JSON file for storing fruit words, the program's structure has been significantly improved. This refactor enhances maintainability, scalability, and readability of the codebase, while also providing a more organized approach to managing game data. This approach aligns with best practices in software development, particularly in separating data from application logic.
+## Transition from pyfiglet to rich Library
+Issue:
+Initially, the application used pyfiglet for generating ASCII art text, but its functionality was limited and didn't offer advanced styling or formatting options.
+
+Solution:
+After researching and exploring alternatives, I integrated the rich library, which provided enhanced features for displaying styled text and panels within the terminal.
+
+By switching to the rich library, the application gained flexibility, improved visual appeal, and enhanced functionality for displaying text and panels. This transition not only addressed the limitations of pyfiglet but also aligned with modern standards for terminal-based user interfaces.
+
+
+### Deployment
+The site was deployed via Heroku, and the live link can be found here: [Word-hunt](https://word-hunt-73b4f6b952fd.herokuapp.com/)
+
+Before deploying to Heroku pip3 freeze > requirements.txt was used to add all the dependencies required to the requirements.txt file. This is required for the game to run on Heroku.
+The following steps were then taken:
+1. Log in to Heroku or create an account.
+2. On the main page click the button labelled New in the top right corner and from the drop-down menu select "Create New App".
+3. Enter a unique and meaningful app name.
+4. Next select your region.
+5. Click on the Create App button.
+6. Click on the Settings Tab and scroll down to Config Vars.
+7. Input CREDS and the content of your Google Sheet API creds file as another config var and click add.
+8. Next, scroll down to the Buildpack section click Add Buildpack select Python and click Save Changes
+9. Repeat step 8 to add node.js. Note: The Buildpacks must be in the correct order. If not click and drag them to move into the correct order.
+10. Scroll to the top of the page and choose the Deploy tab.
+11. Select Github as the deployment method.
+12. Confirm you want to connect to GitHub.
+13. Search for the repository name and click the connect button.
+14. Scroll to the bottom of the deploy page and either click Enable Automatic Deploys for automatic deploys or Deploy Branch to deploy manually. Manually deployed branches will need re-deploying each time the repo is updated.
+15. Click View to view the deployed site.
+
+The site is now live and operational.
 
 ## Credits
 ### Resources Used
