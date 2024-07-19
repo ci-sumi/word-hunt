@@ -125,6 +125,7 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
    ### Future Features
    - I plan to enhance the Word-Hunt game by replacing the static JSON file with a dynamic dictionary API to fetch words. This API integration will allow for a more varied and engaging gameplay experience with a broader range of word choices.
    -  Incorporate images related to the guessed words. For example, when a player correctly guesses "apple," display an image of an apple alongside the confirmation message. This visual reinforcement can enhance the gaming experience and reinforce learning.
+   - Scoring system: Modify the scoring system so that if a player achieves 60 points, they should have the opportunity to increase their score with additional successful attempts during the same game session. This means that if the player restarts the game within the same app run, any new points earned should be added to their existing total, allowing for continuous improvement and scoring updates.
 ### Data Model for Word-Hunt Game
    1. Google Sheets Integration
     Google Sheets: Utilized for storing and managing game scores.
