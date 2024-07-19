@@ -8,7 +8,7 @@ Players receive immediate feedback on their guesses, with correct and incorrect 
 
 The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.herokuapp.com/)
 
-![Site Mockup]???
+![Site Mockup](docs/readme_images/ami_responsive.png)
 
 ## How to Play
 1. **Start the Game**:
@@ -154,9 +154,14 @@ The live link can be found here - [Word-Hunt](https://word-hunt-73b4f6b952fd.her
      Dependencies:
     gspread: Python API for Google Sheets.
     rich: Used for styling and formatting console output.
+## Testing
+The python files have all been passed through [PEP8 Online](https://pep8ci.herokuapp.com/). All python files were checked with no errors reported. See screen show below:
 
+<details>
+  <summary>run.py</summary>
 
-  [!Menu]
+  ![Run](docs/readme_images/PEP8_Testing.png)
+</details>
 
 
 
