@@ -1,5 +1,5 @@
 # Word-Hunt
-## <span style="color:blue">Welcome to Word-Hunt</span>, a fun interactive fruit themed word guessing game!
+## **Welcome to Word-Hunt**🎉, a fun interactive fruit themed word guessing game!
 
 Word-Hunt is a terminal-based game where players guess a hidden 5 letter fruit word within six attempts. This fun and engaging game offers a blend of luck and logic, giving players a delightful break from their daily routine. While it focuses on the simple joy of guessing fruit names, it also subtly enhances problem-solving and vocabulary skills, making it both entertaining and educational.
 
