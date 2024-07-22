@@ -178,6 +178,7 @@ The python files have all been passed through [PEP8 Online](https://pep8ci.herok
   - Verified that guesses must be exactly five characters long.
   - Implemented validation to reject guesses containing numbers.
   - Integrated validation to ensure guesses are actual words from the json file.
+  ![userinputvalidation](docs/readme_images/user_input_validation.png)
 - Feedback Messages
   - Ensured clear and informative feedback messages for each type of input validation.
   - Verified that users receive appropriate information regarding game progress and outcomes.
