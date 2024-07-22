@@ -119,7 +119,8 @@ def correct_letters(g, f):
         else:
             result +=f"[{wrong_style}]{guess_letter}[/{wrong_style}]"
 
-    table = Table(show_header=False,show_lines=True,box=HEAVY)
+    table = Table(show_header=False,show_lines=True,box=HEAVY,
+                  border_style="bold blue")
     table.add_row(result)
     return table
 
