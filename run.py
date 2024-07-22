@@ -7,6 +7,8 @@ from datetime import datetime
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
+from rich.table import Table
+from rich.box import HEAVY
 
 console = Console()
 
@@ -104,24 +106,24 @@ def print_goodbye():
     console.input("\nDo rerun the program to start the game...\n")
 
 
-def correct_letters(guess, fruit):
-    """Returns a formatted string highlighted correct and incorrect letters"""
-    HIGHLIGHT_COLOR_CORRECT = "\033[92m"
-    HIGHLIGHT_COLOR_WRONG = "\033[91m"
-    RESET_COLOR = "\033[0m"
-    result = ""
-    if len(guess) != len(fruit):
+def correct_letters(g, f):
+    """Highlight the correct and wrong letters using rich."""
+    correct_style="bold green"
+    wrong_style="bold red"
+    if len(g) != len(f):
         raise ValueError("Guess and correct word must be same length")
-    for guess_letter, correct_letter in zip(guess, fruit):
+    result = ""
+    for guess_letter, correct_letter in zip(g, f):
         if guess_letter.lower() == correct_letter.lower():
-            result += HIGHLIGHT_COLOR_CORRECT + guess_letter + RESET_COLOR
+            result +=f"[{correct_style}]{guess_letter}[/{correct_style}]" 
         else:
-            result += HIGHLIGHT_COLOR_WRONG + guess_letter + RESET_COLOR
+            result +=f"[{wrong_style}]{guess_letter}[/{wrong_style}]"
 
-    top_border = "╭" + "─" * (len(result) + 2) + "╮"
-    bottom_border = "╰" + "─" * (len(result) + 2) + "╯"
+    table = Table(show_header=False,show_lines=True,box=HEAVY)
+    table.add_row(result)
+    return table
 
-    return top_border + "\n" + f"│ {result} │" + "\n" + bottom_border
+    
 
 
 def append_score_to_sheet(name, score):
@@ -159,8 +161,8 @@ def play_game():
                     continue
 
                 attempts -= 1
-                highlighted = correct_letters(guess, fruit_random)
-                console.print(highlighted)
+                table = correct_letters(guess,fruit_random)
+                console.print(table)
                 console.print(f"Incorrect! You have {attempts} attempts left.")
             if attempts == 0:
                 print_gameover()
