@@ -108,23 +108,21 @@ def print_goodbye():
 
 def correct_letters(g, f):
     """Highlight the correct and wrong letters using rich."""
-    correct_style="bold green"
-    wrong_style="bold red"
+    correct_style = "bold green"
+    wrong_style = "bold red"
     if len(g) != len(f):
         raise ValueError("Guess and correct word must be same length")
     result = ""
     for guess_letter, correct_letter in zip(g, f):
         if guess_letter.lower() == correct_letter.lower():
-            result +=f"[{correct_style}]{guess_letter}[/{correct_style}]" 
+            result += f"[{correct_style}]{guess_letter}[/{correct_style}]"
         else:
-            result +=f"[{wrong_style}]{guess_letter}[/{wrong_style}]"
+            result += f"[{wrong_style}]{guess_letter}[/{wrong_style}]"
 
-    table = Table(show_header=False,show_lines=True,box=HEAVY,
+    table = Table(show_header=False, show_lines=True, box=HEAVY,
                   border_style="bold blue")
     table.add_row(result)
     return table
-
-    
 
 
 def append_score_to_sheet(name, score):
@@ -162,7 +160,7 @@ def play_game():
                     continue
 
                 attempts -= 1
-                table = correct_letters(guess,fruit_random)
+                table = correct_letters(guess, fruit_random)
                 console.print(table)
                 console.print(f"Incorrect! You have {attempts} attempts left.")
             if attempts == 0:
